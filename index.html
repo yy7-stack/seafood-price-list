@@ -734,7 +734,7 @@
     </div>
 
     <!-- ⑦ 金鯧魚 -->
-    <div class="card" data-type="chilled" data-cat="fish" data-name="金鯧魚 Golden Pomfret">
+    <div class="card" data-type="live frozen chilled" data-cat="fish" data-name="金鯧魚 Golden Pomfret">
       <img class="card-img" src="img_pomfret.jpg" alt="金鯧魚"
            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
       <div class="card-img-placeholder" style="display:none">
@@ -851,10 +851,10 @@
   function applyFilters() {
     let visible = 0;
     cards.forEach(card => {
-      const t = card.dataset.type;
+      const types = card.dataset.type.split(' ');
       const c = card.dataset.cat;
       const n = card.dataset.name.toLowerCase();
-      const typeOk   = activeType === 'all' || t === activeType;
+      const typeOk   = activeType === 'all' || types.includes(activeType);
       const catOk    = activeCat  === 'all' || c === activeCat;
       const searchOk = !searchQ   || n.includes(searchQ);
       const show = typeOk && catOk && searchOk;
